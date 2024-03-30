@@ -8,16 +8,37 @@ O saldo só aumenta por meio de depósitos, e só diminui por meio de saques. Pa
 Nota: a conta pode ficar com saldo negativo se o saldo não for suficiente para realizar o saque e/ou pagar a taxa.
 Você deve fazer um programa que realize o cadastro de uma conta, dando opção para que seja ou não informado o valor de depósito inicial.
 Em seguida, realizar um depósito e depois um saque, sempre mostrando os dados da conta após cada operação.*/
-Cliente c1=new Cliente();
-c1.CriarConta();
-System.Console.WriteLine(c1);
+string separador=new string('-',50);
+System.Console.WriteLine(separador);
+System.Console.WriteLine("Digite o nome");
+string nome=Console.ReadLine();
+System.Console.WriteLine("Digite o número da conta");
+int numerodaconta=int.Parse(Console.ReadLine());
+System.Console.WriteLine("Deseja realizar um depósito inicial?");
+string fazerdepositoinicial=Console.ReadLine();
+Cliente c1;
+if(fazerdepositoinicial=="Sim"||fazerdepositoinicial=="SIM"||fazerdepositoinicial=="sim")
+{
+    System.Console.WriteLine("Digite o valor do depósito inicial");
+    double depositoinicial=double.Parse(Console.ReadLine());
+    c1=new Cliente(nome,numerodaconta,depositoinicial);
+}
+else
+{
+   c1=new Cliente(nome,numerodaconta);
+}
+System.Console.WriteLine(separador);
 Console.ReadKey();
 Console.Clear();
-c1.RealizarDeposito();
-System.Console.WriteLine(c1);
+System.Console.WriteLine(separador);
+System.Console.WriteLine("Digite o valor do depósito");
+double Deposito=double.Parse(Console.ReadLine());
+c1.RealizarDeposito(Deposito);
 Console.ReadKey();
 Console.Clear();
-c1.RealizarSaque();
-System.Console.WriteLine(c1);
+System.Console.WriteLine(separador);
+System.Console.WriteLine("Digite o valor do saque (com taxa de 5 reais)");
+double Saque=double.Parse(Console.ReadLine());
+c1.RealizarSaque(Saque);
 Console.ReadKey();
 Console.Clear();
